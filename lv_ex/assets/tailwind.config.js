@@ -9,12 +9,6 @@ module.exports = {
     "../lib/*_web.ex",
     "../lib/*_web/**/*.*ex"
   ],
-  purge: [
-    '../lib/**/*.ex',
-    '../lib/**/*.leex',
-    '../lib/**/*.eex',
-    './js/**/*.js'
-  ],
   theme: {
     fontFamily: {
       sans: [

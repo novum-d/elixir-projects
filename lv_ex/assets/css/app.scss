@@ -1,3 +1,12 @@
+@use "./nprogress.css";
+@use "./live_view.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* This file is for your main application CSS */
+
+
 body {
   @apply antialiased relative bg-cool-gray-200 font-sans;
 }
@@ -36,7 +45,7 @@ ul.examples {
   @apply max-w-xl mx-auto text-center;
 
   button {
-    @apply bg-transparent mx-1 py-2 px-4 border border-cool-gray-400 border-2 rounded-lg shadow-sm transition ease-in-out duration-150 outline-none;
+    @apply bg-transparent mx-1 py-2 px-4 border border-cool-gray-400 rounded-lg shadow-sm transition ease-in-out duration-150 outline-none;
   }
 
   button:hover {
@@ -67,7 +76,7 @@ ul.examples {
   @apply max-w-lg mx-auto text-center;
 
   .card {
-    @apply bg-white shadow rounded-lg shadow-lg;
+    @apply bg-white rounded-lg shadow-lg;
 
     .content {
       @apply p-6;
@@ -179,11 +188,11 @@ ul.examples {
   }
 
   .open {
-    @apply inline-flex items-center px-3 py-1 rounded-md text-xs font-medium leading-5 bg-green-200 text-green-800 rounded-full;
+    @apply inline-flex items-center px-3 py-1 rounded-md text-xs font-medium leading-5 bg-green-200 text-green-800;
   }
 
   .closed {
-    @apply inline-flex items-center px-3 py-1 rounded-md text-xs font-medium leading-5 bg-red-200 text-red-800 rounded-full;
+    @apply inline-flex items-center px-3 py-1 rounded-md text-xs font-medium leading-5 bg-red-200 text-red-800;
   }
 
   .stores {
@@ -329,11 +338,11 @@ ul.examples {
   }
 
   .fresh {
-    @apply px-4 py-2 rounded-md text-lg font-medium leading-5 bg-green-200 text-green-800 rounded-full;
+    @apply px-4 py-2 rounded-md text-lg font-medium leading-5 bg-green-200 text-green-800;
   }
 
   .stale {
-    @apply px-4 py-2 rounded-md text-lg font-medium leading-5 bg-red-200 text-red-800 rounded-full;
+    @apply px-4 py-2 rounded-md text-lg font-medium leading-5 bg-red-200 text-red-800;
   }
 
   table {
@@ -403,7 +412,7 @@ ul.examples {
   @apply max-w-3xl mx-auto;
 
   .incident {
-    @apply flex items-center justify-between mt-2 border-r border-b border-l border-cool-gray-300 border-l-0 border-t bg-white rounded-b rounded-b-none rounded p-4 leading-normal w-full;
+    @apply flex items-center justify-between mt-2 border-r border-b border-l border-cool-gray-300 border-t bg-white rounded-b rounded p-4 leading-normal w-full;
   }
 
   .priority {
@@ -415,7 +424,7 @@ ul.examples {
   }
 
   .location {
-    @apply flex-1 px-4 font-semibold text-lg text-cool-gray-600 text-base;
+    @apply flex-1 px-4 font-semibold text-lg text-cool-gray-600;
   }
 
   .status {
@@ -431,7 +440,7 @@ ul.examples {
   }
 
   .resolved {
-    @apply text-lg font-bold leading-5 text-indigo-600 bg-transparent text-indigo-600 px-2;
+    @apply text-lg font-bold leading-5 text-indigo-600 bg-transparent px-2;
   }
 
   .priority-1 {

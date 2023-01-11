@@ -30,7 +30,7 @@ defmodule LvExWeb.LightLive do
       <button phx-click="rando">
         Light Me Up!
       </button>
-      <form phx-change="update">
+      <form phx-change="update" class="md-0">
         <input type="range" min="0" max="100" name="brightness" value={@brightness} />
       </form>
     </div>
