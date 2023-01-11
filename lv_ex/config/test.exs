@@ -17,14 +17,17 @@ config :lv_ex, LvEx.Repo,
 # you can enable the server option below.
 config :lv_ex, LvExWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "pAaqvAHd6KfBtu1nhJ5yH4yVHFWA5r6GXerI22+5YYnyrZ7IzC31x/LwBSb1LDy0",
+  secret_key_base: "ejAJ4aGYW/5m//LMJAlBVdMFw8GyjGM6GFCj5w3KjWXDwYMXQe+Ge/YHR0w0m1tJ",
   server: false
 
 # In test we don't send emails.
 config :lv_ex, LvEx.Mailer, adapter: Swoosh.Adapters.Test
 
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
+
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime

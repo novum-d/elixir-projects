@@ -7,7 +7,8 @@ defmodule LvExWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_lv_ex_key",
-    signing_salt: "Oh1jKeD4"
+    signing_salt: "NBlDLe3G",
+    same_site: "Lax"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
@@ -20,7 +21,7 @@ defmodule LvExWeb.Endpoint do
     at: "/",
     from: :lv_ex,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only: LvExWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

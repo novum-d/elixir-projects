@@ -8,12 +8,14 @@ defmodule LvEx.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      LvEx.Repo,
       # Start the Telemetry supervisor
       LvExWeb.Telemetry,
+      # Start the Ecto repository
+      LvEx.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: LvEx.PubSub},
+      # Start Finch
+      {Finch, name: LvEx.Finch},
       # Start the Endpoint (http/https)
       LvExWeb.Endpoint
       # Start a worker by calling: LvEx.Worker.start_link(arg)
