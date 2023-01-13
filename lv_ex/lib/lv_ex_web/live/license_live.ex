@@ -1,7 +1,7 @@
 defmodule LvExWeb.LicenseLive do
   use LvExWeb, :live_view
 
-  alias LiveViewStudio.Licenses
+  alias LvEx.Licenses
   import Number.Currency
 
   def render(assigns) do

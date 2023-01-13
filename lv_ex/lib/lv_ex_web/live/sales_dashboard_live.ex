@@ -1,7 +1,7 @@
 defmodule LvExWeb.SalesDashboardLive do
   use LvExWeb, :live_view
 
-  alias LiveViewStudio.Sales
+  alias LvEx.Sales
 
   def render(assigns) do
     ~H"""
