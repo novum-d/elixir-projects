@@ -80,13 +80,13 @@ defmodule LvExWeb.SearchLive do
       case Stores.search_by_zip(zip) do
         [] ->
           socket
-          |> put_flash(:info, "No store matching \"#{zip}\"")
+          |> put_flash(:info, "No stores matching \"#{zip}\"")
           |> assign(stores: [], loading: false)
 
         stores ->
           socket
           |> clear_flash()
-          |> assign(socket, stores: stores, loading: false)
+          |> assign(stores: stores, loading: false)
       end
 
     {:noreply, socket}
