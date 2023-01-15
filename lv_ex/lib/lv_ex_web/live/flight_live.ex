@@ -3,7 +3,6 @@ defmodule LvExWeb.FlightLive do
 
   alias LvEx.Flights
 
-  @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~H"""
     <div id="search">
@@ -37,10 +36,10 @@ defmodule LvExWeb.FlightLive do
             </div>
             <div class="second-line">
               <div class="departs">
-                Departs: <%= flight.departure_time %>
+                Departs: <%= format_time(flight.departure_time) %>
               </div>
               <div class="arrives">
-                Arrives: <%= flight.arrival_time %>
+                Arrives: <%= format_time(flight.arrival_time) %>
               </div>
             </div>
           </li>
@@ -76,5 +75,9 @@ defmodule LvExWeb.FlightLive do
       end
 
     {:noreply, socket}
+  end
+
+  defp format_time(time) do
+    Timex.format!(time, "%b %d at %H:%m", :strftime)
   end
 end
