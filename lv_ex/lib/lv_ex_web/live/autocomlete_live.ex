@@ -30,6 +30,7 @@ defmodule LvExWeb.AutocompleteLive do
           placefolder="City Code"
           autocomplete="off"
           list="matches"
+          phx-debounce="1000"
           readonly={@loading}
         />
         <button type="submit">
