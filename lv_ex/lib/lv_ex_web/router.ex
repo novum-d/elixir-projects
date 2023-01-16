@@ -23,6 +23,7 @@ defmodule LvExWeb.Router do
     live "/sales-dashboard", SalesDashboardLive
     live "/search", SearchLive
     live "/flight", FlightLive
+    live "/autocomplete", AutocompleteLive
   end
 
   # Other scopes may use custom stacks.
