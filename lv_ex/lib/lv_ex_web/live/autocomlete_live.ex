@@ -2,6 +2,7 @@ defmodule LvExWeb.AutocompleteLive do
   use LvExWeb, :live_view
 
   alias LvEx.Stores
+  alias LvEx.Cities
 
   def render(assigns) do
     ~H"""
@@ -21,6 +22,23 @@ defmodule LvExWeb.AutocompleteLive do
           <img src="images/search.svg" alt="search" />
         </button>
       </form>
+      <form phx-submit="city-search" phx-change="suggest-city">
+        <input
+          type="text"
+          name="city"
+          value={@city}
+          placefolder="City Code"
+          autocomplete="off"
+          list="matches"
+          readonly={@loading}
+        />
+        <button type="submit">
+          <img src="images/search.svg" alt="search" />
+        </button>
+      </form>
+      <datalist id="matches">
+        <option :for={match <- @matches} value={match}><%= match %></option>
+      </datalist>
       <div :if={@loading} class="loader">Loading...</div>
       <div class="stores">
         <ul>
@@ -54,7 +72,9 @@ defmodule LvExWeb.AutocompleteLive do
       assign(
         socket,
         zip: "",
-        stores: Stores.list_stores(),
+        city: "",
+        stores: [],
+        matches: [],
         loading: false
       )
 
@@ -65,13 +85,30 @@ defmodule LvExWeb.AutocompleteLive do
     send(self(), {:run_zip_search, zip})
 
     socket =
-      assign(
-        socket,
+      assign(socket,
         zip: zip,
         stores: [],
         loading: true
       )
 
+    {:noreply, socket}
+  end
+
+  def handle_event("city-search", %{"city" => city}, socket) do
+    send(self(), {:run_city_search, city})
+
+    socket =
+      assign(socket,
+        city: city,
+        stores: [],
+        loading: true
+      )
+
+    {:noreply, socket}
+  end
+
+  def handle_event("suggest-city", %{"city" => prefix}, socket) do
+    socket = assign(socket, matches: Cities.suggest(prefix))
     {:noreply, socket}
   end
 
@@ -81,6 +118,23 @@ defmodule LvExWeb.AutocompleteLive do
         [] ->
           socket
           |> put_flash(:info, "No stores matching \"#{zip}\"")
+          |> assign(stores: [], loading: false)
+
+        stores ->
+          socket
+          |> clear_flash()
+          |> assign(stores: stores, loading: false)
+      end
+
+    {:noreply, socket}
+  end
+
+  def handle_info({:run_city_search, city}, socket) do
+    socket =
+      case Stores.search_by_city(city) do
+        [] ->
+          socket
+          |> put_flash(:info, "No stores matching \"#{city}\"")
           |> assign(stores: [], loading: false)
 
         stores ->

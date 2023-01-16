@@ -7,6 +7,8 @@ defmodule LvEx.Stores do
   end
 
   def search_by_city(city) do
+    :timer.sleep(2000)
+
     list_stores()
     |> Enum.filter(&(&1.city == city))
   end
