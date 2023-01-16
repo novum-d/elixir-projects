@@ -28,7 +28,7 @@ defmodule LvExWeb.AutocompleteLive do
           name="city"
           value={@city}
           placefolder="City Code"
-          autocomplete="off"
+          autocomplete="nope"
           list="matches"
           phx-debounce="1000"
           readonly={@loading}
