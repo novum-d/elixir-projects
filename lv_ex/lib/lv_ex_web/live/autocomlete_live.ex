@@ -84,27 +84,13 @@ defmodule LvExWeb.AutocompleteLive do
 
   def handle_event("zip-search", %{"zip" => zip}, socket) do
     send(self(), {:run_zip_search, zip})
-
-    socket =
-      assign(socket,
-        zip: zip,
-        stores: [],
-        loading: true
-      )
-
+    socket = assign(socket, zip: zip, stores: [], loading: true)
     {:noreply, socket}
   end
 
   def handle_event("city-search", %{"city" => city}, socket) do
     send(self(), {:run_city_search, city})
-
-    socket =
-      assign(socket,
-        city: city,
-        stores: [],
-        loading: true
-      )
-
+    socket = assign(socket, city: city, stores: [], loading: true)
     {:noreply, socket}
   end
 
