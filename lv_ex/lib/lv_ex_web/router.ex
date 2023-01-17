@@ -24,6 +24,7 @@ defmodule LvExWeb.Router do
     live "/search", SearchLive
     live "/flight", FlightLive
     live "/autocomplete", AutocompleteLive
+    live "/filter", FilterLive
   end
 
   # Other scopes may use custom stacks.

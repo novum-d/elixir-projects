@@ -6,6 +6,7 @@ defmodule LvEx.Repo.Migrations.CreateBoats do
       add :model, :string
       add :type, :string
       add :price, :string
+      add :image, :string
 
       timestamps()
     end
