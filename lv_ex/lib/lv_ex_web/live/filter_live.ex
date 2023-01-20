@@ -19,6 +19,7 @@ defmodule LvExWeb.FilterLive do
               <%= price_checkbox(price: price, checked: price in @prices) %>
             <% end %>
           </div>
+          <a href="#" phx-click="clear">Clear</a>
         </div>
       </form>
       <div class="boats">
@@ -44,8 +45,13 @@ defmodule LvExWeb.FilterLive do
   end
 
   def mount(_params, _session, socket) do
-    socket = assign(socket, boats: Boats.list_boats(), type: "", prices: [])
+    socket = assign_defaults(socket)
     {:ok, socket, temporary_assigns: [boats: []]}
+  end
+
+  def handle_event("clear", _payload, socket) do
+    socket = assign_defaults(socket)
+    {:noreply, socket}
   end
 
   def handle_event("filter", %{"type" => type, "prices" => prices}, socket) do
@@ -53,6 +59,10 @@ defmodule LvExWeb.FilterLive do
     boats = Boats.list_boats(params)
     socket = assign(socket, params ++ [boats: boats])
     {:noreply, socket}
+  end
+
+  defp assign_defaults(socket) do
+    assign(socket, boats: Boats.list_boats(), type: "", prices: [])
   end
 
   defp price_checkbox(assigns) do
