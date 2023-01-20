@@ -1,6 +1,5 @@
 defmodule LvExWeb.FilterLive do
   use LvExWeb, :live_view
-
   alias LvEx.Boats
   import Phoenix.HTML.Form
 

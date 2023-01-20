@@ -83,6 +83,15 @@ defmodule LvExWeb.LightLive do
     {:noreply, socket}
   end
 
+  defp temp_radio_button(assgins) do
+    assigns = Enum.into(assgins, %{})
+
+    ~H"""
+    <input type="radio" id={@value} name="temp" value={@value} checked={@value == @temp} />
+    <label for={@value}><%= @value %></label>
+    """
+  end
+
   defp temp_color(3000), do: "#F1C40D"
   defp temp_color(4000), do: "#FEFF66"
   defp temp_color(5000), do: "#99CCFF"
