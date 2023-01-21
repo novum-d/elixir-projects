@@ -9,7 +9,8 @@ defmodule LvEx.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      dialyzer: [plt_add_deps: :transitive]
     ]
   end
 
@@ -55,7 +56,8 @@ defmodule LvEx.MixProject do
       {:castore, "== 0.1.20", override: true},
       {:faker, "~> 0.17.0"},
       {:number, "~> 1.0"},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 
