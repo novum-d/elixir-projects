@@ -35,12 +35,9 @@ defmodule LvExWeb.LightLive do
       </form>
 
       <form phx-change="change-temp">
-        <input type="radio" id="3000" name="temp" value="3000" checked={3000 == @temp} />
-        <label for="3000">3000</label>
-        <input type="radio" id="4000" name="temp" value="4000" checked={4000 == @temp} />
-        <label for="4000">4000</label>
-        <input type="radio" id="5000" name="temp" value="5000" checked={5000 == @temp} />
-        <label for="5000">5000</label>
+        <%= for temp <- [3000, 4000, 5000] do %>
+          <%= temp_radio_button(temp: temp, checked: temp == @temp) %>
+        <% end %>
       </form>
     </div>
     """
@@ -87,8 +84,8 @@ defmodule LvExWeb.LightLive do
     assigns = Enum.into(assgins, %{})
 
     ~H"""
-    <input type="radio" id={@value} name="temp" value={@value} checked={@value == @temp} />
-    <label for={@value}><%= @value %></label>
+    <input type="radio" id={"#{@temp}"} name="temp" value={@temp} checked={@checked} />
+    <label for={@temp}><%= @temp %></label>
     """
   end
 
