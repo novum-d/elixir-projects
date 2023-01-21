@@ -9,16 +9,30 @@ defmodule LvEx.Stores do
   alias LvEx.Stores.Store
 
   @doc """
-  Returns the list of store.
+  Returns the list of stores.
 
   ## Examples
 
-      iex> list_store()
+      iex> list_stores()
       [%Store{}, ...]
 
   """
-  def list_store do
+  def list_stores do
     Repo.all(Store)
+  end
+
+  def search_by_zip(zip) do
+    :timer.sleep(2000)
+
+    from(s in Store, where: s.zip == ^zip)
+    |> Repo.all()
+  end
+
+  def search_by_city(city) do
+    :timer.sleep(2000)
+
+    from(s in Store, where: s.city == ^city)
+    |> Repo.all()
   end
 
   @doc """

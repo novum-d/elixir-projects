@@ -23,4 +23,24 @@ defmodule LvEx.StoresFixtures do
 
     store
   end
+
+  @doc """
+  Generate a store.
+  """
+  def store_fixture(attrs \\ %{}) do
+    {:ok, store} =
+      attrs
+      |> Enum.into(%{
+        city: "some city",
+        hours: "some hours",
+        name: "some name",
+        open: true,
+        phone_number: "some phone_number",
+        street: "some street",
+        zip: "some zip"
+      })
+      |> LvEx.Stores.create_store()
+
+    store
+  end
 end

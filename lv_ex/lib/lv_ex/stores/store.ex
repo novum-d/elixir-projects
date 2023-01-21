@@ -2,9 +2,9 @@ defmodule LvEx.Stores.Store do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "store" do
-    field :Hours, :string
+  schema "stores" do
     field :city, :string
+    field :hours, :string
     field :name, :string
     field :open, :boolean, default: false
     field :phone_number, :string
@@ -17,7 +17,7 @@ defmodule LvEx.Stores.Store do
   @doc false
   def changeset(store, attrs) do
     store
-    |> cast(attrs, [:name, :street, :phone_number, :city, :zip, :open, :Hours])
-    |> validate_required([:name, :street, :phone_number, :city, :zip, :open, :Hours])
+    |> cast(attrs, [:name, :street, :phone_number, :city, :zip, :open, :hours])
+    |> validate_required([:name, :street, :phone_number, :city, :zip, :open, :hours])
   end
 end

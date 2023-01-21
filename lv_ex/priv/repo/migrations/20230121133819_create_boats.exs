@@ -3,10 +3,10 @@ defmodule LvEx.Repo.Migrations.CreateBoats do
 
   def change do
     create table(:boats) do
-      add :model, :string
-      add :type, :string
-      add :price, :string
       add :image, :string
+      add :model, :string
+      add :price, :string
+      add :type, :string
 
       timestamps()
     end

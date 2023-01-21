@@ -14,7 +14,7 @@ defmodule LvEx.Boats.Boat do
   @doc false
   def changeset(boat, attrs) do
     boat
-    |> cast(attrs, [:model, :type, :price, :image])
-    |> validate_required([:model, :type, :price, :image])
+    |> cast(attrs, [:image, :model, :price, :type])
+    |> validate_required([:image, :model, :price, :type])
   end
 end
