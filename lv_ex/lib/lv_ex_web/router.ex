@@ -1,4 +1,5 @@
 defmodule LvExWeb.Router do
+  alias Phoenix.Ecto.SQL.Sandbox
   use LvExWeb, :router
 
   pipeline :browser do
@@ -23,6 +24,7 @@ defmodule LvExWeb.Router do
     live "/sales-dashboard", SalesDashboardLive
     live "/search", SearchLive
     live "/flight", FlightLive
+    live "/sandbox", SandboxLive
     live "/autocomplete", AutocompleteLive
     live "/filter", FilterLive
   end
