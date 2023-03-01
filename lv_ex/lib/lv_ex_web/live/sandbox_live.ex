@@ -1,10 +1,9 @@
 defmodule LvExWeb.SandboxLive do
+  alias LvEx.Sandbox
   use LvExWeb, :live_view
-
   import Number.Currency
-  alias LiveViewStudio.Sandbox
 
-  def mount(_params, _session, socket) do
+  def mount(_prams, _session, socket) do
     socket =
       assign(socket,
         length: "0",
@@ -59,12 +58,6 @@ defmodule LvExWeb.SandboxLive do
     """
   end
 
-  def handle_event("get-quote", _, socket) do
-    price = Sandbox.calculate_price(socket.assigns.weight)
-
-    {:noreply, assign(socket, price: price)}
-  end
-
   def handle_event("calculate", params, socket) do
     %{"length" => l, "width" => w, "depth" => d} = params
     weight = Sandbox.calculate_weight(l, w, d)
@@ -74,10 +67,17 @@ defmodule LvExWeb.SandboxLive do
         length: l,
         width: w,
         depth: d,
-        weight: weight,
-        price: nil
+        weight: weight
       )
 
     {:noreply, socket}
   end
+
+  def handle_event("get-quote", _, socket) do
+    price = Sandbox.calculate_price(socket.assigns.weight)
+    socket = assign(socket, price: price)
+
+    {:noreply, socket}
+  end
 end
+
